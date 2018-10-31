@@ -53,10 +53,17 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	// queryAllCars chaincode function - requires no arguments , ex: args: [''],
 	const request = {
 		//targets : --- letting this default to the peers assigned to the channel
-		chaincodeId: 'fabcar',
-		fcn: 'queryAllCars',
+		chaincodeId: 'drug',
+		fcn: 'queryAllDrugs',
 		args: ['']
 	};
+
+	//const request = {
+		//targets : --- letting this default to the peers assigned to the channel
+	//	chaincodeId: 'drug',
+		//fcn: 'queryDrug',
+		//args: ['DRUG1']
+	 // };
 
 	// send the query proposal to the peer
 	return channel.queryByChaincode(request);
@@ -69,9 +76,10 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 		} else {
 			console.log("Response is ", query_responses[0].toString());
 		}
-	} else {
+	} else {		
 		console.log("No payloads were returned from query");
 	}
 }).catch((err) => {
 	console.error('Failed to query successfully :: ' + err);
 });
+

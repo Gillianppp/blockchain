@@ -1,10 +1,5 @@
 var express = require('express');
-var cors = require('cors')
 var app = express();
-
-app.use(cors());
-
-
 //const query = require('./fabcar/query.js')
 
 // you can make a request to a database here and retrieve some data
@@ -44,10 +39,11 @@ var Users = {
 
     app.get('/queryallcars', function (req, res) {
      
-      var Fabric_Client = require('fabric-client');
-      var path = require('path');
-      var util = require('util');
-      var os = require('os');
+     
+var Fabric_Client = require('fabric-client');
+var path = require('path');
+var util = require('util');
+var os = require('os');
 
 //
 var fabric_client = new Fabric_Client();
@@ -56,7 +52,7 @@ var fabric_client = new Fabric_Client();
 var channel = fabric_client.newChannel('mychannel');
 var peer = fabric_client.newPeer('grpc://localhost:7051');
 channel.addPeer(peer);
-var query_responses;
+
 //
 var member_user = null;
 var store_path = path.join(__dirname, 'hfc-key-store');
@@ -79,7 +75,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	return fabric_client.getUserContext('user1', true);
 }).then((user_from_store) => {
 	if (user_from_store && user_from_store.isEnrolled()) {
-		console.log('Successfully loaded Sharat from persistence');
+		console.log('Successfully loaded user1 from persistence');
 		member_user = user_from_store;
 	} else {
 		throw new Error('Failed to get user1.... run registerUser.js');
@@ -89,17 +85,17 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	// queryAllCars chaincode function - requires no arguments , ex: args: [''],
 	const request = {
 		//targets : --- letting this default to the peers assigned to the channel
-		chaincodeId: 'fabcar',
-		fcn: 'queryAllCars',
+		chaincodeId: 'drug',
+		fcn: 'queryAllDrugs',
 		args: ['']
 	};
 
 	//const request = {
 		//targets : --- letting this default to the peers assigned to the channel
-	//	chaincodeId: 'fabcar',
-	//	fcn: 'queryCar',
-	//	args: ['CAR11']
-	//  };
+	//	chaincodeId: 'drug',
+		//fcn: 'queryDrug',
+		//args: ['DRUG1']
+	 // };
 
 	// send the query proposal to the peer
 	return channel.queryByChaincode(request);
@@ -119,6 +115,8 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 }).catch((err) => {
 	console.error('Failed to query successfully :: ' + err);
 });
+
+
     });
     
     // what port to run server on

@@ -55,68 +55,66 @@ let Chaincode = class {
   async initLedger(stub, args) {
     console.info('============= START : Initialize Ledger ===========');
     let cars = [];
-    cars.push({Name: "Hydrocodone",IsOpiod:true,Dosage:20,CreateDate:time.Now(),ExpireDate: time.Now().AddDate(1, 0, 0),LastDispenseDate:time.Now().AddDate(0,2,0),numberOfRefills:1});
-	
-    // cars.push({
-    //   make: 'Toyota',
-    //   model: 'Prius',
-    //   color: 'blue',
-    //   owner: 'Tomoko'
-    // });
-    // cars.push({
-    //   make: 'Ford',
-    //   model: 'Mustang',
-    //   color: 'red',
-    //   owner: 'Brad'
-    // });
-    // cars.push({
-    //   make: 'Hyundai',
-    //   model: 'Tucson',
-    //   color: 'green',
-    //   owner: 'Jin Soo'
-    // });
-    // cars.push({
-    //   make: 'Volkswagen',
-    //   model: 'Passat',
-    //   color: 'yellow',
-    //   owner: 'Max'
-    // });
-    // cars.push({
-    //   make: 'Tesla',
-    //   model: 'S',
-    //   color: 'black',
-    //   owner: 'Adriana'
-    // });
-    // cars.push({
-    //   make: 'Peugeot',
-    //   model: '205',
-    //   color: 'purple',
-    //   owner: 'Michel'
-    // });
-    // cars.push({
-    //   make: 'Chery',
-    //   model: 'S22L',
-    //   color: 'white',
-    //   owner: 'Aarav'
-    // });
-    // cars.push({
-    //   make: 'Fiat',
-    //   model: 'Punto',
-    //   color: 'violet',
-    //   owner: 'Pari'
-    // });
-    // cars.push({
-    //   make: 'Tata',
-    //   model: 'Nano',
-    //   color: 'indigo',
-    //   owner: 'Valeria'
-    // });
-    // cars.push({
-    //   make: 'Holden',
-    //   model: 'Barina',
-    //   color: 'brown',
-    //   owner: 'Shotaro'
-    // });
+    cars.push({
+      make: 'Toyota',
+      model: 'Prius',
+      color: 'blue',
+      owner: 'Tomoko'
+    });
+    cars.push({
+      make: 'Ford',
+      model: 'Mustang',
+      color: 'red',
+      owner: 'Brad'
+    });
+    cars.push({
+      make: 'Hyundai',
+      model: 'Tucson',
+      color: 'green',
+      owner: 'Jin Soo'
+    });
+    cars.push({
+      make: 'Volkswagen',
+      model: 'Passat',
+      color: 'yellow',
+      owner: 'Max'
+    });
+    cars.push({
+      make: 'Tesla',
+      model: 'S',
+      color: 'black',
+      owner: 'Adriana'
+    });
+    cars.push({
+      make: 'Peugeot',
+      model: '205',
+      color: 'purple',
+      owner: 'Michel'
+    });
+    cars.push({
+      make: 'Chery',
+      model: 'S22L',
+      color: 'white',
+      owner: 'Aarav'
+    });
+    cars.push({
+      make: 'Fiat',
+      model: 'Punto',
+      color: 'violet',
+      owner: 'Pari'
+    });
+    cars.push({
+      make: 'Tata',
+      model: 'Nano',
+      color: 'indigo',
+      owner: 'Valeria'
+    });
+    cars.push({
+      make: 'Holden',
+      model: 'Barina',
+      color: 'brown',
+      owner: 'Shotaro'
+    });
 
     for (let i = 0; i < cars.length; i++) {
       cars[i].docType = 'car';

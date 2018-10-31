@@ -1,4 +1,4 @@
-ar/*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -33,7 +33,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
-	"time"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	sc "github.com/hyperledger/fabric/protos/peer"
@@ -49,16 +48,6 @@ type Car struct {
 	Model  string `json:"model"`
 	Colour string `json:"colour"`
 	Owner  string `json:"owner"`
-}
-
-type Prescription struct {
-	Name   string `json:"name"`
-	IsOpiod bool `json:"isopiod"`
-	Dosage  uint64 `json:"dosage"`
-	CreateDate time.time `json:"createdate"`
-	ExpireDate time.time `json:"expiredate"`
-	LastDispenseDate  time.time `json:"lastDispenseDate"`
-	NumberOfRefills uint64 `json:"numberOfRefills"`
 }
 
 /*
@@ -103,27 +92,19 @@ func (s *SmartContract) queryCar(APIstub shim.ChaincodeStubInterface, args []str
 	return shim.Success(carAsBytes)
 }
 
-
-
-
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
-	cars := []Prescription{
-		Prescription{Name: "Hydrocodone",IsOpiod:true,Dosage:20,CreateDate:time.Now(),ExpireDate: time.Now().AddDate(1, 0, 0),LastDispenseDate:time.Now().AddDate(0,2,0),numberOfRefills:1}
-	
+	cars := []Car{
+		Car{Make: "Toyota", Model: "Prius", Colour: "blue", Owner: "Tomoko"},
+		Car{Make: "Ford", Model: "Mustang", Colour: "red", Owner: "Brad"},
+		Car{Make: "Hyundai", Model: "Tucson", Colour: "green", Owner: "Jin Soo"},
+		Car{Make: "Volkswagen", Model: "Passat", Colour: "yellow", Owner: "Max"},
+		Car{Make: "Tesla", Model: "S", Colour: "black", Owner: "Adriana"},
+		Car{Make: "Peugeot", Model: "205", Colour: "purple", Owner: "Michel"},
+		Car{Make: "Chery", Model: "S22L", Colour: "white", Owner: "Aarav"},
+		Car{Make: "Fiat", Model: "Punto", Colour: "violet", Owner: "Pari"},
+		Car{Make: "Tata", Model: "Nano", Colour: "indigo", Owner: "Valeria"},
+		Car{Make: "Holden", Model: "Barina", Colour: "brown", Owner: "Shotaro"},
 	}
-	
-	// cars := []Car{
-	// 	Car{Make: "Toyota", Model: "Prius", Colour: "blue", Owner: "Tomoko"},
-	// 	Car{Make: "Ford", Model: "Mustang", Colour: "red", Owner: "Brad"},
-	// 	Car{Make: "Hyundai", Model: "Tucson", Colour: "green", Owner: "Jin Soo"},
-	// 	Car{Make: "Volkswagen", Model: "Passat", Colour: "yellow", Owner: "Max"},
-	// 	Car{Make: "Tesla", Model: "S", Colour: "black", Owner: "Adriana"},
-	// 	Car{Make: "Peugeot", Model: "205", Colour: "purple", Owner: "Michel"},
-	// 	Car{Make: "Chery", Model: "S22L", Colour: "white", Owner: "Aarav"},
-	// 	Car{Make: "Fiat", Model: "Punto", Colour: "violet", Owner: "Pari"},
-	// 	Car{Make: "Tata", Model: "Nano", Colour: "indigo", Owner: "Valeria"},
-	// 	Car{Make: "Holden", Model: "Barina", Colour: "brown", Owner: "Shotaro"},
-	// }
 
 	i := 0
 	for i < len(cars) {

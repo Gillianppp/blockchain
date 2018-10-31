@@ -466,6 +466,10 @@ chaincode:
         # of platforms are expanded.  For now, we can just use baseos
         runtime: $(BASE_DOCKER_NS)/fabric-baseos:$(ARCH)-$(BASE_VERSION)
 
+    drug:
+        # car may need more facilities (JVM, etc) in the future as the catalog
+        # of platforms are expanded.  For now, we can just use baseos
+        runtime: $(BASE_DOCKER_NS)/fabric-baseos:$(ARCH)-$(BASE_VERSION)
     java:
         # This is an image based on java:openjdk-8 with addition compiler
         # tools added for java shim layer packaging.
