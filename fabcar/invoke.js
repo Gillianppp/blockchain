@@ -58,7 +58,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 	// createCar chaincode function - requires 5 args, ex: args: ['CAR12', 'Honda', 'Accord', 'Black', 'Tom'],
 	// changeCarOwner chaincode function - requires 2 args , ex: args: ['CAR10', 'Dave'],
 	// must send the proposal to endorsing peers
-	var request = {
+	/*var request = {
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'drug',
 		fcn: 'createDrug',
@@ -66,7 +66,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 		chainId: 'mychannel',
 		txId: tx_id
 	  };
-
+*/
 	 /* var request = {
 		//targets: let default to the peer assigned to the client
 		chaincodeId: 'fabcar',
@@ -75,6 +75,16 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 		chainId: 'mychannel',
 		txId: tx_id
 	  };*/
+
+	  var request = {
+		//targets: let default to the peer assigned to the client
+		chaincodeId: 'drug',
+		fcn: 'createDrug',
+		args: ['DRUG12','112','3','Ibuprofen', '01/02/2018', 'Active', 'No', 'Yes', '50','Generic','08/03/2018','1','BostonMA'],
+		chainId: 'mychannel',
+		txId: tx_id
+	  };
+
 
 	// send the transaction proposal to the peers
 	return channel.sendTransactionProposal(request);

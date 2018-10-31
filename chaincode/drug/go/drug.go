@@ -184,14 +184,34 @@
  
  func (s *SmartContract) createDrug(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
  
-	 if len(args) != 5 {
-		 return shim.Error("Incorrect number of arguments. Expecting 5")
-	 }
+	// if len(args) != 5 {
+	//	 return shim.Error("Incorrect number of arguments. Expecting 5")
+	// }
  
-	 var drug = Drug{PrescriptionName: args[1], PrescriptionDate: args[2], Status: args[3], ControlledSubstance: args[4]}
+	// var drug = Drug{PrescriptionName: args[1], PrescriptionDate: args[2], Status: args[3], ControlledSubstance: args[4]}
+
+	var Patient = 	Patient{
+		Id:args[1],
+		RiskLevel:args[2],
+		Prescriptions:
+		[]Prescription{
+			{
+		Name:args[3],
+		CreateDate:args[4],
+		Status:args[5],
+		ControlledSubstance:args[6],
+		Opioid:args[7],
+		Dosage:args[8],
+		Brand:args[9],
+		LastDispenseDate:args[10],
+		NumberOfRefills:args[11],
+		Phamacy:args[12],
+			},
+	},
+		}
 	 
-	 drugAsBytes, _ := json.Marshal(drug)
-	 APIstub.PutState(args[0], drugAsBytes)
+	 PatientAsBytes, _ := json.Marshal(Patient)
+	 APIstub.PutState(args[0], PatientAsBytes)
  
 	 return shim.Success(nil)
  }
