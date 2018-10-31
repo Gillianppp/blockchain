@@ -1,12 +1,16 @@
 var express = require('express');
 var app = express();
 var cors = require('cors');
+var bodyParser = require('body-parser');
 //const query = require('./fabcar/query.js')
 
 // you can make a request to a database here and retrieve some data
 // but for this example, we are using a static object of user information
 app.options('*', cors());
+app.use(bodyParser.json())
 app.use(cors());
+
+
     
     // route pages
     app.get('/', function (req, res) {
@@ -19,8 +23,10 @@ app.use(cors());
 			var path = require('path');
 			var util = require('util');
 			var os = require('os');
-			
-			//
+			console.log(req.headers);
+		console.log(req.body);
+
+
 			var fabric_client = new Fabric_Client();
 			
 			// setup the fabric network
