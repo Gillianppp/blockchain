@@ -1,17 +1,19 @@
 var express = require('express');
 var app = express();
+var cors = require('cors');
 //const query = require('./fabcar/query.js')
 
 // you can make a request to a database here and retrieve some data
 // but for this example, we are using a static object of user information
-
+app.options('*', cors());
+app.use(cors());
     
     // route pages
     app.get('/', function (req, res) {
       res.send('Main page is up and running!');
     });
 	 
-		app.get('/PostPrescription', function (req, res) {
+		app.post('/PostPrescription', function (req, res) {
 
 			var Fabric_Client = require('fabric-client');
 			var path = require('path');
@@ -64,7 +66,7 @@ var app = express();
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: ['DRUG14','114','4','HydroEye', '01/02/2018', 'Active', 'No', 'Yes', '50','Generic','08/03/2018','1','BostonMA'],
+					args: ['DRUG19','114','4','HydroEye', '01/02/2018', 'Active', 'No', 'Yes', '50','Generic','08/03/2018','1','BostonMA'],
 					chainId: 'mychannel',
 					txId: tx_id
 					};
