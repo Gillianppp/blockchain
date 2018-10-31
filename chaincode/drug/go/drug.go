@@ -41,27 +41,28 @@
  // Define the Smart Contract structure
  type SmartContract struct {
  }
- /*
+ 
  type Patient struct {
-	Id: string `json:"Id"`
-	RiskLevel:string `json:"RiskLevel"`
-	Prescriptions: []Prescription	
+	Id string `json:"Id"`
+	RiskLevel string `json:"RiskLevel"`
+	Prescriptions []Prescription	
  }
  type Prescription struct {
-	Name:string `json:"Name"`
-	CreateDate:string `json:"Name"`
-	Status:string `json:"Status"`
-	ControlledSubstance:string `json:"ControlledSubstance"`
-	Opioid:string `json:"Opioid"`
-	Dosage:string `json:"Dosage"`
-	Brand:string `json:"Brand"`
-	LastDispenseDate:string `json:"LastDispenseDate"`
-	NumberOfRefills:string `json:"NumberOfRefills"`
-	Phamacy:string `json:"Phamacy"`
+	Name string `json:"Name"`
+	CreateDate string `json:"CreateDate"`
+	Status string `json:"Status"`
+	ControlledSubstance string `json:"ControlledSubstance"`
+	Opioid string `json:"Opioid"`
+	Dosage string `json:"Dosage"`
+	Brand string `json:"Brand"`
+	LastDispenseDate string `json:"LastDispenseDate"`
+	NumberOfRefills string `json:"NumberOfRefills"`
+	Phamacy string `json:"Phamacy"`
  }
- */
+ 
 
  // Define the car structure, with 4 properties.  Structure tags are used by encoding/json library
+ 
  type Drug struct {
 	PrescriptionName   string `json:"PrescriptionName"`
 	PrescriptionDate  string `json:"PrescriptionDate"`
@@ -113,7 +114,7 @@
  }
  
  func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
-	
+	/*
 	 drugs := []Drug{
 		Drug{PrescriptionName: "Hydrocodone", PrescriptionDate: "08/01/2013", Status: "Active", ControlledSubstance: "Yes"},
 		Drug{PrescriptionName: "Lipitor", PrescriptionDate: "09/01/2014", Status: "Inactive", ControlledSubstance: "No"},
@@ -128,7 +129,56 @@
 		 fmt.Println("Added", drugs[i])
 		 i = i + 1
 	 }
- 
+ */
+
+ patients := []Patient{
+	{
+	Id:"111",
+	RiskLevel:"2",
+	Prescriptions:
+	[]Prescription{
+		{
+	Name:"Hydrocodone",
+	CreateDate:"08/01/2018",
+	Status:"Active",
+	ControlledSubstance:"Yes",
+	Opioid:"Yes",
+	Dosage:"50",
+	Brand:"Generic",
+	LastDispenseDate:"08/03/2018",
+	NumberOfRefills:"1",
+	Phamacy:"BostonMA",
+		},
+},
+	},
+	{
+		Id:"111",
+		RiskLevel:"2",
+		Prescriptions:
+		[]Prescription{
+			{
+		Name:"Simvastatin",
+		CreateDate:"07/11/2018",
+		Status:"Active",
+		ControlledSubstance:"Yes",
+		Opioid:"Yes",
+		Dosage:"50",
+		Brand:"Generic",
+		LastDispenseDate:"08/03/2018",
+		NumberOfRefills:"1",
+		Phamacy:"BostonMA",
+	},
+	},
+},
+ }
+	i := 0
+	for i < len(patients) {
+		fmt.Println("i is ", i)
+		patientsAsBytes, _ := json.Marshal(patients[i])
+		APIstub.PutState("DRUG"+strconv.Itoa(i), patientsAsBytes)
+		fmt.Println("Added", patients[i])
+		i = i + 1
+	}
 	 return shim.Success(nil)
  }
  
