@@ -17,7 +17,7 @@ app.use(cors());
       res.send('Main page is up and running!');
     });
 	 
-		app.post('/PostPrescription', function (req, res) {
+		app.post('/PostPrescription/:patientId', function (req, res) {
 
 			var Fabric_Client = require('fabric-client');
 			var path = require('path');
@@ -26,6 +26,9 @@ app.use(cors());
 
 			console.log(req.body);
 			
+			var patientId = req.params.patientId;
+			console.log("patientId:",patientId);
+
 			var parsedJson = JSON.parse(req.body);
 
 			var name = parsedJson['Name'];
@@ -39,6 +42,7 @@ app.use(cors());
 			var numberOfRefills = parsedJson['NumberOfRefills'];
 			var phamacy = parsedJson['Phamacy'];
 			
+			console.log("drug name:",name);
 
 
 			var fabric_client = new Fabric_Client();
@@ -86,7 +90,7 @@ app.use(cors());
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: ['DRUG19','114','4',name, createDate, status, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
+					args: ['DRUG19',patientId,'4',name, createDate, status, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
 					chainId: 'mychannel',
 					txId: tx_id
 					};
