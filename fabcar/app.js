@@ -23,8 +23,22 @@ app.use(cors());
 			var path = require('path');
 			var util = require('util');
 			var os = require('os');
-			console.log(req.headers);
-		console.log(req.body);
+
+			console.log(req.body);
+			
+			var parsedJson = JSON.parse(req.body);
+
+			var name = parsedJson['Name'];
+			var createDate = parsedJson['CreateDate'];
+			var status = parsedJson['Status'];
+			var controlledSubstance = parsedJson['ControlledSubstance'];
+			var opioid = parsedJson['Opioid'];
+			var dosage = parsedJson['Dosage'];
+			var brand = parsedJson['Brand'];
+			var lastDispenseDate = parsedJson['LastDispenseDate'];
+			var numberOfRefills = parsedJson['NumberOfRefills'];
+			var phamacy = parsedJson['Phamacy'];
+			
 
 
 			var fabric_client = new Fabric_Client();
@@ -72,7 +86,7 @@ app.use(cors());
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: ['DRUG19','114','4','HydroEye', '01/02/2018', 'Active', 'No', 'Yes', '50','Generic','08/03/2018','1','BostonMA'],
+					args: ['DRUG19','114','4',name, createDate, status, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
 					chainId: 'mychannel',
 					txId: tx_id
 					};
