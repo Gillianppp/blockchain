@@ -24,7 +24,7 @@
 	CreateDate string `json:"CreateDate"`
 	Status string `json:"Status"`
 	ControlledSubstance string `json:"ControlledSubstance"`
-	Opioid string `json:"Opioid"`
+	Schedule string `json:"Schedule"`
 	Dosage string `json:"Dosage"`
 	Brand string `json:"Brand"`
 	LastDispenseDate string `json:"LastDispenseDate"`
@@ -90,7 +90,7 @@
 	CreateDate:"08/01/2018",
 	Status:"Active",
 	ControlledSubstance:"Yes",
-	Opioid:"Yes",
+	Schedule:"Schedule II",
 	Dosage:"50",
 	Brand:"Generic",
 	LastDispenseDate:"08/03/2018",
@@ -109,7 +109,7 @@
 		CreateDate:"07/11/2018",
 		Status:"Active",
 		ControlledSubstance:"Yes",
-		Opioid:"Yes",
+		Schedule:"Schedule III",
 		Dosage:"50",
 		Brand:"Generic",
 		LastDispenseDate:"08/03/2018",
