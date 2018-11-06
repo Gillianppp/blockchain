@@ -131,7 +131,7 @@
  }
  
  func (s *SmartContract) createDrug(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-
+	log.Println("Create Drug inside go file")
 	var Patient = 	Patient{
 		Id:args[1],
 		RiskLevel:args[2],
@@ -142,7 +142,7 @@
 		CreateDate:args[4],
 		ExpireDate:args[5],
 		ControlledSubstance:args[6],
-		Opioid:args[7],
+		Schedule:args[7],
 		Dosage:args[8],
 		Brand:args[9],
 		LastDispenseDate:args[10],

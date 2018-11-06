@@ -33,7 +33,7 @@ app.use(cors());
 
 			var name = parsedJson['Name'];
 			var createDate = parsedJson['CreateDate'];
-			var status = parsedJson['Status'];
+			var expireOn = parsedJson['ExpireOn'];
 			var controlledSubstance = parsedJson['ControlledSubstance'];
 			var opioid = parsedJson['Opioid'];
 			var dosage = parsedJson['Dosage'];
@@ -90,7 +90,7 @@ app.use(cors());
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: ['DRUG19',patientId,'4',name, createDate, status, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
+					args: [name,patientId,'4',name, createDate, expireOn, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
 					chainId: 'mychannel',
 					txId: tx_id
 					};
