@@ -33,7 +33,7 @@ app.use(cors());
 
 			var name = parsedJson['Name'];
 			var createDate = parsedJson['CreateDate'];
-			var expireOn = parsedJson['ExpireOn'];
+			var expireOn = parsedJson['ExpireDate'];
 			var controlledSubstance = parsedJson['ControlledSubstance'];
 			var schedule = parsedJson['Schedule'];
 			var dosage = parsedJson['Dosage'];
