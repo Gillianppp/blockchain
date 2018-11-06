@@ -22,7 +22,7 @@
  type Prescription struct {
 	Name string `json:"Name"`
 	CreateDate string `json:"CreateDate"`
-	Status string `json:"Status"`
+	ExpireDate string `json:"ExpireDate"`
 	ControlledSubstance string `json:"ControlledSubstance"`
 	Schedule string `json:"Schedule"`
 	Dosage string `json:"Dosage"`
@@ -88,7 +88,7 @@
 		{
 	Name:"Hydrocodone",
 	CreateDate:"08/01/2018",
-	Status:"Active",
+	ExpireDate:"01/20/2019",
 	ControlledSubstance:"Yes",
 	Schedule:"Schedule II",
 	Dosage:"50",
@@ -107,7 +107,7 @@
 			{
 		Name:"Simvastatin",
 		CreateDate:"07/11/2018",
-		Status:"Active",
+		ExpireDate:"12/20/2018",
 		ControlledSubstance:"Yes",
 		Schedule:"Schedule III",
 		Dosage:"50",
@@ -140,7 +140,7 @@
 			{
 		Name:args[3],
 		CreateDate:args[4],
-		Status:args[5],
+		ExpireDate:args[5],
 		ControlledSubstance:args[6],
 		Opioid:args[7],
 		Dosage:args[8],
