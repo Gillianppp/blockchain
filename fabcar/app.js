@@ -31,6 +31,7 @@ app.use(cors());
 
 			var parsedJson = req.body;
 
+			var key = parsedJson['Key'];
 			var name = parsedJson['Name'];
 			var createDate = parsedJson['CreateDate'];
 			var expireOn = parsedJson['ExpireDate'];
@@ -90,7 +91,7 @@ app.use(cors());
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: [name,patientId,'4',name, createDate, expireOn, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
+					args: [key,patientId,'4',name, createDate, expireOn, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
 
 					chainId: 'mychannel',
 					txId: tx_id
