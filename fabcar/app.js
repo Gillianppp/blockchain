@@ -85,12 +85,12 @@ app.use(cors());
 				// get a transaction id object based on the current user assigned to fabric client
 				tx_id = fabric_client.newTransactionID();
 				console.log("Assigning transaction_id: ", tx_id._transaction_id);
-			console.log(patientId,'4',name, createDate, status, controlledSubstance, schedule, dosage,brand,lastDispenseDate,numberOfRefills,phamacy)
+			console.log(patientId,'4',name, createDate, expireOn, controlledSubstance, schedule, dosage,brand,lastDispenseDate,numberOfRefills,phamacy)
 					var request = {
 					//targets: let default to the peer assigned to the client
 					chaincodeId: 'drug',
 					fcn: 'createDrug',
-					args: [name,patientId,'4',name, createDate, expireOn, controlledSubstance, opioid, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
+					args: [name,patientId,'4',name, createDate, expireOn, controlledSubstance, schedule, dosage,brand,lastDispenseDate,numberOfRefills,phamacy],
 
 					chainId: 'mychannel',
 					txId: tx_id
